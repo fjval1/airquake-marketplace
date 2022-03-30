@@ -3,7 +3,7 @@ import useChain from "hooks/useChain";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
+import { ETHLogo } from "./Logos";
 
 const styles = {
   item: {
@@ -22,46 +22,21 @@ const styles = {
 };
 
 const menuItems = [
-  {
+  /*{
     key: "0x1",
     value: "Ethereum",
     icon: <ETHLogo />,
+  },*/
+  /*{
+    key: "0x539",
+    value: "Local Chain",
+    icon: <ETHLogo />,
+  }*/
+  {
+    key: "0x4",
+    value: "Rinkeby Testnet",
+    icon: <ETHLogo />,
   },
-  // {
-  //   key: "0x539",
-  //   value: "Local Chain",
-  //   icon: <ETHLogo />,
-  // },
-  // {
-  //   key: "0x3",
-  //   value: "Ropsten Testnet",
-  //   icon: <ETHLogo />,
-  // },
-   {
-     key: "0x4",
-     value: "Rinkeby Testnet",
-     icon: <ETHLogo />,
-   },
-  // {
-  //   key: "0x2a",
-  //   value: "Kovan Testnet",
-  //   icon: <ETHLogo />,
-  // },
-  // {
-  //   key: "0x5",
-  //   value: "Goerli Testnet",
-  //   icon: <ETHLogo />,
-  // },
-  // {
-  //   key: "0x38",
-  //   value: "Binance",
-  //   icon: <BSCLogo />,
-  // },
-  // {
-  //   key: "0x61",
-  //   value: "Smart Chain Testnet",
-  //   icon: <BSCLogo />,
-  // },
 ];
 
 function Chains() {

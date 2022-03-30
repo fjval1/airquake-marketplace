@@ -28,7 +28,7 @@ contract Marketplace is ReentrancyGuard {
      
      mapping(uint256 => MarketItem) private idToMarketItem;
      
-     event MarketItemCreated (
+    event MarketItemCreated (
         uint indexed itemId,
         address indexed nftContract,
         uint256 indexed tokenId,
@@ -36,7 +36,7 @@ contract Marketplace is ReentrancyGuard {
         address owner,
         uint256 price,
         bool sold
-     );
+     ) ;
      
      event MarketItemSold (
          uint indexed itemId,

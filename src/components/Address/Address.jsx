@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 import { getEllipsisTxt } from "../../helpers/formatters";
 import Blockie from "../Blockie";
-import "./identicon.css";
 
 const styles = {
   address: {
