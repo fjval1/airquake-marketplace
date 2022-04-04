@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useMoralis } from "react-moralis";
+import React, { useState,useEffect } from "react";
+import { useMoralis, useNFTBalances, useWeb3ExecuteFunction, } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Input, Alert, Spin, Button } from "antd";
-import { useNFTBalance } from "hooks/useNFTBalance";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { getExplorer } from "helpers/networks";
-import { useWeb3ExecuteFunction } from "react-moralis";
+
+
 const { Meta } = Card;
 
 const styles = {
@@ -20,8 +20,9 @@ const styles = {
   },
 };
 
+
 function NFTBalance() {
-  const { NFTBalance, fetchSuccess } = useNFTBalance();
+
   const { chainId, marketAddress, contractABI } = useMoralisDapp();
   const { Moralis } = useMoralis();
   const [visible, setVisibility] = useState(false);
@@ -29,9 +30,11 @@ function NFTBalance() {
   const [price, setPrice] = useState(1);
   const [loading, setLoading] = useState(false);
   const contractProcessor = useWeb3ExecuteFunction();
-  const contractABIJson = JSON.parse(contractABI);
+  //const contractABIJson = JSON.parse(contractABI);
+  const contractABIJson = contractABI
   const listItemFunction = "createMarketItem";
   const ItemImage = Moralis.Object.extend("ItemImages");
+
 
   async function list(nft, listPrice) {
     setLoading(true);
@@ -151,6 +154,11 @@ function NFTBalance() {
     itemImage.save();
   }
 
+  const { getNFTBalances, data, error, isLoading, isFetching } = useNFTBalances();
+  useEffect(() => {
+    getNFTBalances({ params: { chain: "0x4", address: "0xb1Fd6b8de50cdfA72a2b809605a8E2a5754b7c27" } })
+  },[]);
+  
   return (
     <>
       <div style={styles.NFTs}>
@@ -163,7 +171,7 @@ function NFTBalance() {
             <div style={{ marginBottom: "10px" }}></div>
           </>
         )}
-        {!fetchSuccess && (
+        {!getNFTBalances && (
           <>
             <Alert
               message="Unable to fetch all NFT metadata... We are searching for a solution, please try again later!"
@@ -172,8 +180,8 @@ function NFTBalance() {
             <div style={{ marginBottom: "10px" }}></div>
           </>
         )}
-        {NFTBalance &&
-          NFTBalance.map((nft, index) => (
+        {data &&
+          data.result.map((nft, index) => (
             <Card
               hoverable
               actions={[

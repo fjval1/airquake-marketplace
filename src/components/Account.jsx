@@ -29,6 +29,7 @@ function Account() {
   const { walletAddress, chainId } = useMoralisDapp();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+
   if (!isAuthenticated) {
     return (
       <div

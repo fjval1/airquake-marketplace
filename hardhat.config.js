@@ -12,5 +12,22 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.13",
+      },
+    ]
+  },
+  paths:{
+    artifacts: "./src/artifacts"
+  },
+  networks: {
+    rinkeby: {
+      url: `https://speedy-nodes-nyc.moralis.io/dc87dee26508baa6bac5aef4/eth/rinkeby`,//moralis speedy node
+      accounts: ['6754ddfd8741e6f406ee313220f299879e8f822ce0f499fb9ff1f525a484995b'] //private key
+    }
+  }
+  
 };

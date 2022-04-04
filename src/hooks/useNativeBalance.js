@@ -11,12 +11,6 @@ export const useNativeBalance = (options) => {
 
   const nativeName = useMemo(() => getNativeByChain(options?.chain || chainId), [options, chainId]);
   
-  console.log({nativeName})
-  console.log({chainId})
-  console.log({walletAddress})
-  //console.log({account})
-  //console.log(account.getNativeBalance())
-  
   const {
     fetch: getBalance,
     data,
