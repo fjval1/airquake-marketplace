@@ -3,7 +3,7 @@ import useChain from "hooks/useChain";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { ETHLogo } from "./Logos";
+import { PolygonLogo } from "./Logos";
 
 const styles = {
   item: {
@@ -31,11 +31,16 @@ const menuItems = [
     key: "0x539",
     value: "Local Chain",
     icon: <ETHLogo />,
-  }*/
+  },
   {
     key: "0x4",
     value: "Rinkeby Testnet",
     icon: <ETHLogo />,
+  },*/
+  {
+    key: "0x13881",
+    value: "Mumbai",
+    icon: <PolygonLogo />,
   },
 ];
 
@@ -48,11 +53,9 @@ function Chains() {
     if (!chainId) return null;
     const newSelected = menuItems.find((item) => item.key === chainId);
     setSelected(newSelected);
-    console.log("current chainId: ", chainId);
   }, [chainId]);
 
   const handleMenuClick = (e) => {
-    console.log("switch to: ", e.key);
     switchNetwork(e.key);
   };
 

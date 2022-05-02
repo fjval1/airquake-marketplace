@@ -12,6 +12,7 @@ import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
 import NFTTokenIds from "components/NFTTokenIds";
 import NFTMinter from "components/NFTMinter";
+import CreateCollection from "components/CreateCollection";
 import { Menu, Layout} from "antd";
 import SearchCollections from "components/SearchCollections";
 import "antd/dist/antd.css";
@@ -85,13 +86,16 @@ const App = () => {
               <NavLink to="/nftMarketPlace">🛒 Explore Market</NavLink>
             </Menu.Item>
             <Menu.Item key="nft">
-              <NavLink to="/nftBalance">🖼 Your Collection</NavLink>
+              <NavLink to="/nftBalance">🖼 Your NFTs</NavLink>
             </Menu.Item>
             <Menu.Item key="transactions">
               <NavLink to="/transactions">📑 Your Transactions</NavLink>
             </Menu.Item>
             <Menu.Item key="minter">
               <NavLink to="/nftMinter">Mint new NFT</NavLink>
+            </Menu.Item>
+            <Menu.Item key="createCollection">
+              <NavLink to="/createCollection">Create Collection</NavLink>
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
@@ -113,6 +117,9 @@ const App = () => {
             </Route>
             <Route path="/nftMinter">
               <NFTMinter />
+            </Route>
+            <Route path="/createCollection">
+              <CreateCollection/>
             </Route>
           </Switch>
           <Redirect to="/NFTMarketPlace" />

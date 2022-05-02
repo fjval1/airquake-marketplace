@@ -11,7 +11,7 @@ contract AirQuake is ERC721URIStorage, Ownable {
   using Counters for Counters.Counter;
   constructor() ERC721("AirQuake", "AQK") {}
 
-  function createItem(string memory tokenURI)
+  function createToken(string memory tokenURI)
         public
         returns (uint256)
     {

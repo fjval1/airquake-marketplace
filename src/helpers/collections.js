@@ -1,6 +1,6 @@
 export const networkCollections = {
   
-  "0x4": [
+  "0x13881": [
     {
       image:
         "https://lh3.googleusercontent.com/sCktmhddBePRNRfmG4cJ5Tbf-Ht4r8X3dCeBEKJ_Cau8FJ4HcS_7eY49H2prW_PndY8JSx-4CVQs5wgmlxJsLlKP=s0",
@@ -16,4 +16,10 @@ export const networkCollections = {
   ],
 };
 
-export const getCollectionsByChain = (chain) => networkCollections[chain];
+export const getCollectionsByChain = (chainId) => {
+  //const Collection = Moralis.Object.extend("Collection");
+  //const query = new Moralis.Query(Collection);
+  //const results = await query.find();
+  //alert("Successfully retrieved " + results.length + " collections.");
+  return networkCollections[chainId]
+}

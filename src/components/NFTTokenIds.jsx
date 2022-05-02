@@ -86,6 +86,8 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   );
   const purchaseItemFunction = "createMarketSale";
   const NFTCollections = getCollectionsByChain(chainId);
+  const {data, error, isLoading } = useMoralisQuery("Collection");
+  const collections = data
 
   async function purchase() {
     setLoading(true);
@@ -121,7 +123,6 @@ function NFTTokenIds({ inputValue, setInputValue }) {
 
   const handleBuyClick = (nft) => {
     setNftToBuy(nft);
-    console.log(nft.image);
     setVisibility(true);
   };
 
@@ -220,7 +221,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
 
         <div style={styles.NFTs}>
           {inputValue === "explore" &&
-            NFTCollections?.map((nft, index) => (
+            collections?.map((nft, index) => (
               <Card
                 hoverable
                 actions={[
@@ -234,7 +235,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 cover={
                   <Image
                     preview={false}
-                    src={nft?.image || "error"}
+                    src={nft?.attributes.Thumbnail._url || "error"}
                     fallback={fallbackImg}
                     alt=""
                     style={{ height: "240px" }}
@@ -242,7 +243,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 }
                 key={index}
               >
-                <Meta title={nft.name} />
+                <Meta title={nft.attributes.Name} />
               </Card>
             ))}
 

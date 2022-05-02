@@ -21,7 +21,6 @@ export const useNativeBalance = (options) => {
     address: walletAddress,
     ...options,
   });
-  console.log(account.getNativeBalance)
   useEffect(() => {
     if (data?.balance) {
       const balances = {

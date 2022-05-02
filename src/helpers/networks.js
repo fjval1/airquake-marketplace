@@ -18,6 +18,11 @@ export const networkConfigs = {
     rpcUrl: "http://127.0.0.1:8545",
   },
   */
+  "0x13881" : {
+    currencySymbol: "MATIC",
+    currencyName: "Polygon Mumbai",
+    blockExplorerUrl: "https://polygon.etherscan.io/",
+  }
 };
 
 export const getNativeByChain = (chain) =>

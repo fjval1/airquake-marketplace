@@ -53,7 +53,6 @@ function NFTBalance() {
     await contractProcessor.fetch({
       params: ops,
       onSuccess: () => {
-        console.log("success");
         setLoading(false);
         setVisibility(false);
         addItemImage();
@@ -82,7 +81,6 @@ function NFTBalance() {
     await contractProcessor.fetch({
       params: ops,
       onSuccess: () => {
-        console.log("Approval Received");
         setLoading(false);
         setVisibility(false);
         succApprove();
