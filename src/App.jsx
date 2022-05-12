@@ -2,7 +2,7 @@ import { useEffect, useState} from "react";
 import { useMoralis } from "react-moralis";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   NavLink,
   Redirect,
@@ -10,11 +10,11 @@ import {
 import Account from "components/Account";
 import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
-import NFTTokenIds from "components/NFTTokenIds";
+import Collections from "components/Collections/Collections";
+import Collection from "components/Collections/Collection";
 import NFTMinter from "components/NFTMinter";
-import CreateCollection from "components/CreateCollection";
+import CreateCollection from "components/Collections/CreateCollection";
 import { Menu, Layout} from "antd";
-import SearchCollections from "components/SearchCollections";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
@@ -56,10 +56,6 @@ const App = () => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
-
-
-  const [inputValue, setInputValue] = useState("explore");
-
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,7 +65,6 @@ const App = () => {
     <Layout style={{ height: "100vh", overflow: "auto" }}>
       <Router>
         <Header style={styles.header}>
-          <SearchCollections setInputValue={setInputValue}/>
           <Menu
             theme="light"
             mode="horizontal"
@@ -82,20 +77,20 @@ const App = () => {
             }}
             defaultSelectedKeys={["nftMarket"]}
           >
-            <Menu.Item key="nftMarket" onClick={() => setInputValue("explore")} >
-              <NavLink to="/nftMarketPlace">🛒 Explore Market</NavLink>
+            <Menu.Item key="collections" >
+              <NavLink to="collections">🛒 Collections</NavLink>
             </Menu.Item>
             <Menu.Item key="nft">
-              <NavLink to="/nftBalance">🖼 Your NFTs</NavLink>
+              <NavLink to="nftBalance">🖼 Your NFTs</NavLink>
             </Menu.Item>
             <Menu.Item key="transactions">
-              <NavLink to="/transactions">📑 Your Transactions</NavLink>
+              <NavLink to="transactions">📑 Your Transactions</NavLink>
             </Menu.Item>
             <Menu.Item key="minter">
-              <NavLink to="/nftMinter">Mint new NFT</NavLink>
+              <NavLink to="nftMinter">Mint new NFT</NavLink>
             </Menu.Item>
             <Menu.Item key="createCollection">
-              <NavLink to="/createCollection">Create Collection</NavLink>
+              <NavLink to="createCollection">Create Collection</NavLink>
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
@@ -105,24 +100,16 @@ const App = () => {
           </div>
         </Header>
         <div style={styles.content}>
-          <Switch>
-            <Route path="/nftBalance">
-              <NFTBalance />
-            </Route>
-            <Route path="/nftMarketPlace">
-              <NFTTokenIds inputValue={inputValue} setInputValue={setInputValue}/>
-            </Route>
-            <Route path="/transactions">
-              <NFTMarketTransactions />
-            </Route>
-            <Route path="/nftMinter">
-              <NFTMinter />
-            </Route>
-            <Route path="/createCollection">
-              <CreateCollection/>
-            </Route>
-          </Switch>
-          <Redirect to="/NFTMarketPlace" />
+          <Routes>
+            <Route path="nftBalance" element={<NFTBalance/>} />
+            <Route path="transactions" element={<NFTMarketTransactions/>} />
+            <Route path="nftMinter" element={<NFTMinter/>} />
+            <Route path="createCollection" element={<CreateCollection />} />
+
+            <Route path="collections" element={<Collections/>} />
+            <Route path="collections/:collectionId" element={<Collection/>} />
+  
+          </Routes>
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>

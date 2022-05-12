@@ -153,9 +153,12 @@ function NFTBalance() {
   }
 
   const { getNFTBalances, data, error, isLoading, isFetching } = useNFTBalances();
+  
   useEffect(() => {
-    getNFTBalances({ params: { chain: "0x4", address: "0xb1Fd6b8de50cdfA72a2b809605a8E2a5754b7c27" } })
+    getNFTBalances({ params: { chain: "0x13881", address: "0xc3FfAF46dDa00219846A0832f576414EC568E2ee" } })
   },[]);
+  
+  console.log(data)
   
   return (
     <>
@@ -172,7 +175,7 @@ function NFTBalance() {
         {!getNFTBalances && (
           <>
             <Alert
-              message="Unable to fetch all NFT metadata... We are searching for a solution, please try again later!"
+              message="Unable to fyetch all NFT metadata... We are searching for a solution, please try again later!"
               type="warning"
             />
             <div style={{ marginBottom: "10px" }}></div>
@@ -209,7 +212,7 @@ function NFTBalance() {
               }
               key={index}
             >
-              <Meta title={nft.name} description={nft.contract_type} />
+              <Meta title={nft.metadata.name} description={nft.metadata.description} />
             </Card>
           ))}
       </div>

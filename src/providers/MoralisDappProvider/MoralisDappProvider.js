@@ -6,9 +6,9 @@ import AirQuakeCollectionABI from '../../artifacts/contracts/airQuakeV1.sol/AirQ
 function MoralisDappProvider({ children }) {
   const { web3, Moralis, user, enableWeb3, isWeb3Enabled, isInitialized } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
-  const [chainId, setChainId] = useState("0x0x13881");       
+  const [chainId, setChainId] = useState("0x13881");       
   const [contractABI, setContractABI] = useState(AirQuakeCollectionABI.abi);
-  const [marketAddress, setMarketAddress] = useState("0xdEEA7900fb7d593C13eE41cf4Af45f0990112d41");
+  const [marketAddress, setMarketAddress] = useState("0xc3FfAF46dDa00219846A0832f576414EC568E2ee");
 
   useEffect(() => {
     Moralis.onChainChanged(function (chain) {

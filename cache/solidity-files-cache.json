@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\contracts\\airQuakeV1.sol": {
-      "lastModificationDate": 1649096897136,
-      "contentHash": "7d73a319849f8694264c972448fa49e7",
+      "lastModificationDate": 1649116636132,
+      "contentHash": "5f030c48c90dcff8dab07d950aef22c3",
       "sourceName": "contracts/airQuakeV1.sol",
       "solcConfig": {
         "version": "0.8.13",

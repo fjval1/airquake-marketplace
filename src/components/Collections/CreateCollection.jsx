@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useMoralis } from "react-moralis";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
-import { useWeb3ExecuteFunction, useNewMoralisObject, useMoralisFile } from "react-moralis";
 
 const CreateCollection = () => {
     const { Moralis } = useMoralis();
-    const { chainId, marketAddress, contractABI, walletAddress } = useMoralisDapp();
 
     const [name, setName] = useState();
     const [description, setDescription] = useState();
@@ -30,6 +28,7 @@ const CreateCollection = () => {
         newCollection.set("Name", name);
         newCollection.set("Description", description);
         newCollection.set("Thumbnail",image)
+        newCollection.set("Creator",Moralis.User.current())
         newCollection.save();
         alert("collection created")
     }  
@@ -50,19 +49,19 @@ const CreateCollection = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className="title">NFT Minter</div>
+                <div className="title">Create Collection</div>
                 <div id="app" className="col-md-6 offset-md-3">
-                    <div class="form_element">
+                    <div className="form_element">
                         <input onChange={handleNameChange} value={name || ""} className="form-control" type="text" id="input_name" name="name" placeholder="Collection name"/>
                     </div>
-                    <div class="form_element">
+                    <div className="form_element">
                         <input onChange={handleDescriptionChange} value={description || ""} className="form-control"  type="text" id="input_description" name="description" placeholder="Description"/>
                     </div>
-                    <div class="form_element">
+                    <div className="form_element">
                         <input onChange={handleFileChange} className="form-control" type="file" id="input_image" name="image" accept="image/png, image/jpeg"/>
                     </div>
-                    <div class="form_element">
-                        <button onClick={handleCreateCollection} className="btn btn-primary btn-lg btn-block" id="submit_button">Submit</button>
+                    <div className="form_element">
+                        <button onClick={handleCreateCollection} className="btn btn-primary btn-lg btn-block" id="submit_button">Create</button>
                     </div>
                 </div>
             </div>
