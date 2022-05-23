@@ -4,12 +4,14 @@ import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvide
 
 const CreateCollection = () => {
     const { Moralis } = useMoralis();
+    const { marketplaceAddress, marketplaceABI} = useMoralisDapp();
 
     const [name, setName] = useState();
+    const [symbol, setSymbol] = useState();
     const [description, setDescription] = useState();
-    const [selectedFile, setSelectedFile] = useState();
+    //const [selectedFile, setSelectedFile] = useState();
 
-    
+    /*
     const uploadImageToMoralis = async () => {
         if (!selectedFile){
             alert("no thumbnail")
@@ -20,31 +22,34 @@ const CreateCollection = () => {
           );
         return file
     }
-    
+    */
 
     const handleCreateCollection = async () =>{
-        const image = await uploadImageToMoralis()
-        const newCollection = new Moralis.Object("Collection");
-        newCollection.set("Name", name);
-        newCollection.set("Description", description);
-        newCollection.set("Thumbnail",image)
-        newCollection.set("Creator",Moralis.User.current())
-        newCollection.save();
+        //const image = await uploadImageToMoralis()
+        const options = {
+            abi: marketplaceABI,
+            contractAddress: marketplaceAddress,
+            functionName: "createNftContract",
+            params: {
+              _name: name,
+              _symbol: symbol,
+              _description: description
+            },
+        }
+        const message = await Moralis.executeFunction(options);
         alert("collection created")
     }  
 
-
+    /*
     const handleFileChange = (e) =>{
         setSelectedFile(e.target.files[0])
     }
+    */
+    const handleNameChange = (e) => {setName(e.target.value)}
 
-    const handleNameChange = (e) => {
-        setName(e.target.value)
-    }
+    const handleSymbolChange = (e) => {setSymbol(e.target.value)}
 
-    const handleDescriptionChange = (e) => {
-        setDescription(e.target.value)
-    }
+    const handleDescriptionChange = (e) => {setDescription(e.target.value)}
 
     return (
         <div className="container">
@@ -58,7 +63,7 @@ const CreateCollection = () => {
                         <input onChange={handleDescriptionChange} value={description || ""} className="form-control"  type="text" id="input_description" name="description" placeholder="Description"/>
                     </div>
                     <div className="form_element">
-                        <input onChange={handleFileChange} className="form-control" type="file" id="input_image" name="image" accept="image/png, image/jpeg"/>
+                        <input onChange={handleSymbolChange} value={symbol || ""} className="form-control"  type="text" id="input_symbol" name="symbol" placeholder="Symbol"/>
                     </div>
                     <div className="form_element">
                         <button onClick={handleCreateCollection} className="btn btn-primary btn-lg btn-block" id="submit_button">Create</button>

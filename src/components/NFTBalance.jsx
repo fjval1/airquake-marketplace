@@ -155,7 +155,8 @@ function NFTBalance() {
   const { getNFTBalances, data, error, isLoading, isFetching } = useNFTBalances();
   
   useEffect(() => {
-    getNFTBalances({ params: { chain: "0x13881", address: "0xc3FfAF46dDa00219846A0832f576414EC568E2ee" } })
+    //getNFTBalances({ params: { chain: "0x13881", address: "0xc3FfAF46dDa00219846A0832f576414EC568E2ee" } })
+    getNFTBalances({ params: { chain: "0x13881"} })
   },[]);
   
   console.log(data)
@@ -163,15 +164,6 @@ function NFTBalance() {
   return (
     <>
       <div style={styles.NFTs}>
-        {contractABIJson.noContractDeployed && (
-          <>
-            <Alert
-              message="No Smart Contract Details Provided. Please deploy smart contract and provide address + ABI in the MoralisDappProvider.js file"
-              type="error"
-            />
-            <div style={{ marginBottom: "10px" }}></div>
-          </>
-        )}
         {!getNFTBalances && (
           <>
             <Alert

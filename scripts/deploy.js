@@ -6,13 +6,13 @@ async function main() {
   console.log("Deploying contracts with the account:", deployer.address);
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
-  const AirQuake = await ethers.getContractFactory("AirQuake");
-  const airquake = await AirQuake.deploy();
-
-  await airquake.deployed();
-  //await airquake.whitelistCreator(deployer.address)
-  console.log("AirQuake deployed to:", airquake.address);
-
+  const NFTImplementationContractFactory = await ethers.getContractFactory("NFT");
+  const NFTImplementation = await NFTImplementationContractFactory.deploy()
+  console.log("nft implementation deployed to:", NFTImplementation.address);
+  const MarketplaceContractFactory = await ethers.getContractFactory("Marketplace");
+  const marketplace = await MarketplaceContractFactory.deploy(NFTImplementation.address);
+  await marketplace.deployed();
+  console.log("marketplace deployed to:", marketplace.address);
 }
 
 main()

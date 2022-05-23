@@ -12,8 +12,8 @@ import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
 import Collections from "components/Collections/Collections";
 import Collection from "components/Collections/Collection";
-import NFTMinter from "components/NFTMinter";
 import CreateCollection from "components/Collections/CreateCollection";
+import NFT from "components/Collections/NFT";
 import { Menu, Layout} from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
@@ -86,9 +86,6 @@ const App = () => {
             <Menu.Item key="transactions">
               <NavLink to="transactions">📑 Your Transactions</NavLink>
             </Menu.Item>
-            <Menu.Item key="minter">
-              <NavLink to="nftMinter">Mint new NFT</NavLink>
-            </Menu.Item>
             <Menu.Item key="createCollection">
               <NavLink to="createCollection">Create Collection</NavLink>
             </Menu.Item>
@@ -103,12 +100,10 @@ const App = () => {
           <Routes>
             <Route path="nftBalance" element={<NFTBalance/>} />
             <Route path="transactions" element={<NFTMarketTransactions/>} />
-            <Route path="nftMinter" element={<NFTMinter/>} />
             <Route path="createCollection" element={<CreateCollection />} />
-
             <Route path="collections" element={<Collections/>} />
             <Route path="collections/:collectionId" element={<Collection/>} />
-  
+            <Route path="collections/:collectionId/:tokenId" element={<NFT/>} />
           </Routes>
         </div>
       </Router>
