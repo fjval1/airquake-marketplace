@@ -10,14 +10,14 @@ export const networkConfigs = {
     blockExplorerUrl: "https://rinkeby.etherscan.io/",
     
   },*/
-  /*
-  "0x539": {
+  
+  "0x7A69": {
     chainName: "Local Chain",
     currencyName: "ETH",
     currencySymbol: "ETH",
-    rpcUrl: "http://127.0.0.1:8545",
+    rpcUrl: "http://localhost:8545",
   },
-  */
+  
   "0x13881" : {
     currencySymbol: "MATIC",
     currencyName: "Polygon Mumbai",

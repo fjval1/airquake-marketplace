@@ -5,12 +5,12 @@ import MarketplaceABI from '../../artifacts/contracts/marketplace.sol/Marketplac
 import NFTABI from '../../artifacts/contracts/NFT.sol/NFT.json'
 
 function MoralisDappProvider({ children }) {
-  const { web3, Moralis, user, enableWeb3, isWeb3Enabled, isInitialized } = useMoralis();
+  const { web3, Moralis, user } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
   const [chainId, setChainId] = useState("0x13881");       
   const [marketplaceABI, setMarketplaceABI] = useState(MarketplaceABI.abi);
   const [nftABI, setNftABI] = useState(NFTABI.abi);
-  const [marketplaceAddress, setMarketplaceAddress] = useState("0xC2c92BDE02C6AB25B156563B06e1085a69A98438");
+  const [marketplaceAddress, setMarketplaceAddress] = useState("0x96e0b965D6e6f0B7f4c30250610b5b1A83fC6869");
 
   useEffect(() => {
     Moralis.onChainChanged(function (chain) {
@@ -25,6 +25,7 @@ function MoralisDappProvider({ children }) {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   //useEffect(() => setChainId(web3.givenProvider?.chainId));
+
   useEffect(() => setChainId("0x13881"));
 
   useEffect(

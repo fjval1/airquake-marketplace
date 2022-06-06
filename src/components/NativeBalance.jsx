@@ -1,14 +1,17 @@
-import { useNativeBalance } from "hooks/useNativeBalance";
-import { n4 } from "helpers/formatters";
+//import { n4 } from "helpers/formatters";
+import { useNativeBalance, useMoralis } from "react-moralis";
+
 
 function NativeBalance(props) {
-  const { balance, nativeName } = useNativeBalance(props);
-
-  return (
-    <div style={{ textAlign: "center", whiteSpace: "nowrap" }}>{`${n4.format(
-      balance.formatted
-    )} ${nativeName}`}</div>
-  );
+  
+  const { Moralis } = useMoralis();
+  const { getBalances, data, nativeToken, error, isLoading } = useNativeBalance({chain:"0x13881"}); 
+  if (data && data.balance){
+    return <div>{Moralis.Units.FromWei(data.balance)}</div>
+  }
+  else{
+    return null
+  }
 }
 
 export default NativeBalance;

@@ -475,8 +475,8 @@
       ]
     },
     "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\contracts\\NFT.sol": {
-      "lastModificationDate": 1653089243681,
-      "contentHash": "eca88e17703584b94714f1c6caf7fcbd",
+      "lastModificationDate": 1653325545134,
+      "contentHash": "283d3e7009e7589aca4119024d6c3872",
       "sourceName": "contracts/NFT.sol",
       "solcConfig": {
         "version": "0.8.13",
@@ -676,8 +676,8 @@
       ]
     },
     "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\contracts\\marketplace.sol": {
-      "lastModificationDate": 1653093932431,
-      "contentHash": "3aa2752f2df9213b123b4f2fe1ad07a7",
+      "lastModificationDate": 1654223628977,
+      "contentHash": "6a488f7fbfbbce5fe2f3f9b05602d272",
       "sourceName": "contracts/marketplace.sol",
       "solcConfig": {
         "version": "0.8.13",

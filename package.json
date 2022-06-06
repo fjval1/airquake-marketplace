@@ -16,7 +16,7 @@
     "ethereum-waffle": "^4.0.0-alpha.0",
     "ethers": "^5.6.2",
     "hardhat": "^2.9.1",
-    "moralis": "^1.5.8",
+    "moralis": "^1.8.0",
     "moralis-admin-cli": "^2.1.16",
     "react": "^17.0.2",
     "react-blockies": "^1.4.1",

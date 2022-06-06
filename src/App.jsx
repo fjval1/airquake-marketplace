@@ -14,12 +14,13 @@ import Collections from "components/Collections/Collections";
 import Collection from "components/Collections/Collection";
 import CreateCollection from "components/Collections/CreateCollection";
 import NFT from "components/Collections/NFT";
+import WhitelistCreator from "components/Admin/Whitelist";
 import { Menu, Layout} from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Text from "antd/lib/typography/Text";
-import NFTMarketTransactions from "components/NFTMarketTransactions";
+//import NFTMarketTransactions from "components/NFTMarketTransactions";
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -75,7 +76,7 @@ const App = () => {
               marginLeft: "50px",
               width: "100%",
             }}
-            defaultSelectedKeys={["nftMarket"]}
+            defaultSelectedKeys={["whitelist"]}
           >
             <Menu.Item key="collections" >
               <NavLink to="collections">🛒 Collections</NavLink>
@@ -83,11 +84,11 @@ const App = () => {
             <Menu.Item key="nft">
               <NavLink to="nftBalance">🖼 Your NFTs</NavLink>
             </Menu.Item>
-            <Menu.Item key="transactions">
-              <NavLink to="transactions">📑 Your Transactions</NavLink>
-            </Menu.Item>
             <Menu.Item key="createCollection">
               <NavLink to="createCollection">Create Collection</NavLink>
+            </Menu.Item>
+            <Menu.Item key="whitelist">
+              <NavLink to="whitelist">Creator Whitelist</NavLink>
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
@@ -98,8 +99,8 @@ const App = () => {
         </Header>
         <div style={styles.content}>
           <Routes>
+            <Route path="whitelist" element={<WhitelistCreator/>} />
             <Route path="nftBalance" element={<NFTBalance/>} />
-            <Route path="transactions" element={<NFTMarketTransactions/>} />
             <Route path="createCollection" element={<CreateCollection />} />
             <Route path="collections" element={<Collections/>} />
             <Route path="collections/:collectionId" element={<Collection/>} />

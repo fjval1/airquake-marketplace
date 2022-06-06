@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useMoralis } from "react-moralis";
-import { Card, Image, Tooltip, Modal, Input, Alert, Spin, Button } from "antd";
+import { useMoralis, useMoralisQuery } from "react-moralis";
+import { Card, Image, Tooltip, Badge } from "antd";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import NFTMinter from './NFTMinter'
 import {
   BrowserRouter as Router,
   NavLink,
 } from "react-router-dom";
+import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 
 const { Meta } = Card;
 const styles = {
@@ -25,28 +26,91 @@ const styles = {
 const Collection = () => {
   let params = useParams();
   const [nfts,setNFTs] = useState();
-  const { Moralis, isInitialized } = useMoralis();
+  const [thumbnail, setThumbnail] = useState();
+  const { Moralis, isInitialized, isAuthenticated } = useMoralis();
   const collectionId = params.collectionId
+
   useEffect(() => {
     const getData = async () => {
-
       const options = {
         chain: "0x13881",
-        token_address: collectionId,
+        address: collectionId,
       };
-      const nftData = await Moralis.Web3API.account.getNFTsForContract(options);
+      const nftData = await Moralis.Web3API.token.getAllTokenIds(options);
       const jsonNFTs = nftData.result.map((nft)=>{return {token_id:nft.token_id, metadata:JSON.parse(nft.metadata)}})
       setNFTs(jsonNFTs);
+      /*
+      const readOptions = {
+        contractAddress: collectionId,
+        functionName: "authorAddress",
+        abi: nftABI,
+      };
+      */
+      //const author = await Moralis.executeFunction(readOptions);
+      //setCollectionAuthor(author)
     }
     if (isInitialized){
       getData()
     }
 
   },[isInitialized]);
+  
+  const {data:forSaleItems, error, isLoading } = useMoralisQuery("Listings", query => 
+        query.equalTo("NFTCollectionAddress", collectionId)
+             .equalTo("confirmed",true)
+             .equalTo("active",true));
+          
+  const {data } = useMoralisQuery("NFTCollections", query => 
+    query.equalTo("contractAddr", collectionId)
+    .equalTo("confirmed",true));
+  const collectionAuthor = data.length && data[0].attributes.author                
 
+  const isForSale = (nft) => {
+    return forSaleItems.find(
+      (item) => 
+        item.attributes.tokenId === nft.token_id
+    )
+  }
+
+  const isCollectionAuthor = () => {
+    if (!isAuthenticated){
+      return false
+    }
+    if (collectionAuthor){
+      return collectionAuthor.toLowerCase() === Moralis.User.current().attributes.ethAddress
+    }
+  }
+  
+  const handleThumbnailChange = (e) => {
+    setThumbnail(e.target.files[0])
+  }
+
+  const handleSetThumbnail = () => {
+    alert("changing collection thumbnail")
+  }
+
+  const thumbnailEditor = 
+  <div className="container">
+    <div className="row">
+      <div className="title">Collection Thumbnail</div>
+      <div id="app" className="col-md-6 offset-md-3">
+          <div className="form_element">
+              <input onChange={handleThumbnailChange} className="form-control" type="file" id="input_image" name="image" accept="image/png, image/jpeg"/>
+          </div>
+          <div className="form_element">
+              <button onClick={handleSetThumbnail} className="btn btn-primary btn-lg btn-block" id="submit_button">Edit</button>
+          </div>
+      </div>
+    </div>
+  </div> 
   return (
     <>
-      <NFTMinter collectionId={collectionId}/>
+      { isCollectionAuthor() && <NFTMinter collectionId={collectionId}/>}
+      { isCollectionAuthor() && thumbnailEditor}
+      {collectionAuthor && <div>
+        Collection Author: {collectionAuthor}
+      </div>
+      }
       <div style={styles.NFTs}>
         {nfts &&
           nfts.map((nft, index) => (
@@ -59,7 +123,7 @@ const Collection = () => {
                   />
                 </Tooltip>,
                 <Tooltip title="List NFT for sale">
-                  <ShoppingCartOutlined onClick={() => console.log("")} />
+                  <ShoppingCartOutlined onClick={() => alert("Not implemented here yet")} />
                 </Tooltip>,
               ]}
               style={{ width: 240, border: "2px solid #e7eaf3" }}
@@ -76,9 +140,12 @@ const Collection = () => {
               }
               key={index}
             >
+              {isForSale(nft) && <Badge.Ribbon text="Buy now" color="green"></Badge.Ribbon>}
               <Meta title={nft.metadata.name} description={nft.metadata.description} />
             </Card>
           ))}
+          {nfts != undefined && !nfts.length && 
+          <h2>No NFTs have been minted yet</h2>}
       </div>
     </>
   );

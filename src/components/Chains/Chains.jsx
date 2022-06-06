@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useChain from "hooks/useChain";
+import { useChain } from "react-moralis";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
@@ -22,21 +22,6 @@ const styles = {
 };
 
 const menuItems = [
-  /*{
-    key: "0x1",
-    value: "Ethereum",
-    icon: <ETHLogo />,
-  },*/
-  /*{
-    key: "0x539",
-    value: "Local Chain",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x4",
-    value: "Rinkeby Testnet",
-    icon: <ETHLogo />,
-  },*/
   {
     key: "0x13881",
     value: "Mumbai",
@@ -50,6 +35,9 @@ function Chains() {
   const [selected, setSelected] = useState({});
 
   useEffect(() => {
+    console.log("hola")
+    console.log(chainId)
+    console.log("chao")
     if (!chainId) return null;
     const newSelected = menuItems.find((item) => item.key === chainId);
     setSelected(newSelected);
