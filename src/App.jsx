@@ -1,5 +1,5 @@
 import { useEffect, useState} from "react";
-import { useMoralis } from "react-moralis";
+import { useMoralis, useChain } from "react-moralis";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,8 +13,13 @@ import NFTBalance from "components/NFTBalance";
 import Collections from "components/Collections/Collections";
 import Collection from "components/Collections/Collection";
 import CreateCollection from "components/Collections/CreateCollection";
-import NFT from "components/Collections/NFT";
+import Creators from "components/Creators/Creators";
+import Creator from "components/Creators/Creator";
+import UserProfile from "components/Users/UserProfile";
+import NFT from "components/NFTs/NFT";
 import WhitelistCreator from "components/Admin/Whitelist";
+import Onramp from "components/Onramp";
+
 import { Menu, Layout} from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
@@ -53,8 +58,11 @@ const styles = {
     fontWeight: "600",
   },
 };
+
+
+
 const App = () => {
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
+  const { Moralis, isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
   useEffect(() => {
@@ -90,11 +98,20 @@ const App = () => {
             <Menu.Item key="whitelist">
               <NavLink to="whitelist">Creator Whitelist</NavLink>
             </Menu.Item>
+            <Menu.Item key="creators">
+              <NavLink to="creators">Creators</NavLink>
+            </Menu.Item>
+            { isAuthenticated && 
+            <Menu.Item key="users/:userId">
+              <NavLink to={"users/"+Moralis.User.current().attributes.ethAddress}>My Profile</NavLink>
+            </Menu.Item>
+            }
           </Menu>
           <div style={styles.headerRight}>
             <Chains />
             <NativeBalance />
             <Account />
+            
           </div>
         </Header>
         <div style={styles.content}>
@@ -105,6 +122,9 @@ const App = () => {
             <Route path="collections" element={<Collections/>} />
             <Route path="collections/:collectionId" element={<Collection/>} />
             <Route path="collections/:collectionId/:tokenId" element={<NFT/>} />
+            <Route path="creators" element={<Creators />} />
+            <Route path="users/:userId" element={<UserProfile />} />
+            <Route path="onramp" element={<Onramp />} />
           </Routes>
         </div>
       </Router>

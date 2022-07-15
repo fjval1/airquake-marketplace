@@ -10,7 +10,8 @@ function MoralisDappProvider({ children }) {
   const [chainId, setChainId] = useState("0x13881");       
   const [marketplaceABI, setMarketplaceABI] = useState(MarketplaceABI.abi);
   const [nftABI, setNftABI] = useState(NFTABI.abi);
-  const [marketplaceAddress, setMarketplaceAddress] = useState("0x96e0b965D6e6f0B7f4c30250610b5b1A83fC6869");
+  const marketplaceAddr = process.env.REACT_APP_MARKETPLACE_ADDRESS
+  const [marketplaceAddress, setMarketplaceAddress] = useState(marketplaceAddr);
 
   useEffect(() => {
     Moralis.onChainChanged(function (chain) {

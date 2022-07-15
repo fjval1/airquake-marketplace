@@ -1,10 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.12;
 
-
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 //import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
@@ -19,7 +17,6 @@ contract NFT is
     ERC721URIStorageUpgradeable
 {
 
-    using Strings for uint256;
     using Counters for Counters.Counter;
 
     event NftMinted(
@@ -29,15 +26,16 @@ contract NFT is
         string tokenUri
     );
     
+    /////////////////////////////////////
+    // STATE VARIABLES //////////////////
+    /////////////////////////////////////
+    
     address public authorAddress; 
-    string public description; 
+    address public marketplace;
     Counters.Counter private _tokenIdCounter; 
 
     modifier onlyNFTCollectionAuthor() {
-        require(
-            authorAddress == msg.sender,
-            "SIGNER IS NOT NFT COLLECTION AUTHOR"
-        );
+        require(authorAddress == msg.sender,"Caller must be NFTCollectionAuthor");
         _;
     }
 
@@ -45,14 +43,13 @@ contract NFT is
     
     function initialize(
         string calldata _name,
-        string calldata _symbol,
-        string calldata _description
+        string calldata _symbol
     ) public payable initializer {
         __ERC721_init(_name, _symbol);
         __ERC721Enumerable_init();
         __ERC721URIStorage_init();
         authorAddress = tx.origin;
-        description = _description;
+        marketplace = msg.sender;
         _tokenIdCounter.increment();
     }
         
@@ -107,4 +104,14 @@ contract NFT is
     {
         return super.supportsInterface(interfaceId);
     }
+
+    function isApprovedForAll(
+        address _owner,
+        address _operator
+    ) public override(ERC721Upgradeable, IERC721Upgradeable) view returns (bool isOperator) {
+        if (_operator == marketplace) {
+            return true;
+        }
+        return super.isApprovedForAll(_owner, _operator);
+    } 
 }

@@ -3,12 +3,9 @@ import { useParams } from "react-router-dom";
 import { useMoralis, useMoralisQuery } from "react-moralis";
 import { Card, Image, Tooltip, Badge } from "antd";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import NFTMinter from './NFTMinter'
-import {
-  BrowserRouter as Router,
-  NavLink,
-} from "react-router-dom";
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
+import NFTMinter from '../NFTs/NFTMinter';
+import { NavLink } from "react-router-dom";
+//import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 
 const { Meta } = Card;
 const styles = {
@@ -39,15 +36,6 @@ const Collection = () => {
       const nftData = await Moralis.Web3API.token.getAllTokenIds(options);
       const jsonNFTs = nftData.result.map((nft)=>{return {token_id:nft.token_id, metadata:JSON.parse(nft.metadata)}})
       setNFTs(jsonNFTs);
-      /*
-      const readOptions = {
-        contractAddress: collectionId,
-        functionName: "authorAddress",
-        abi: nftABI,
-      };
-      */
-      //const author = await Moralis.executeFunction(readOptions);
-      //setCollectionAuthor(author)
     }
     if (isInitialized){
       getData()
@@ -55,7 +43,7 @@ const Collection = () => {
 
   },[isInitialized]);
   
-  const {data:forSaleItems, error, isLoading } = useMoralisQuery("Listings", query => 
+  const {data:forSaleItems, error, isLoading } = useMoralisQuery("PlacedListings", query => 
         query.equalTo("NFTCollectionAddress", collectionId)
              .equalTo("confirmed",true)
              .equalTo("active",true));
@@ -80,14 +68,43 @@ const Collection = () => {
       return collectionAuthor.toLowerCase() === Moralis.User.current().attributes.ethAddress
     }
   }
-  
-  const handleThumbnailChange = (e) => {
+
+  const handleThumbnailChange = (e) =>{
     setThumbnail(e.target.files[0])
   }
 
-  const handleSetThumbnail = () => {
-    alert("changing collection thumbnail")
+  //TODO: DRY
+  const uploadImageToMoralis = async () => {
+    if (!thumbnail){
+        alert("no thumbnail")
+        return
+    }
+    const file = new Moralis.File(thumbnail.name, thumbnail)
+    let fileUrl;
+    await file.save().then(
+          (fileInfo) => {
+            fileUrl = fileInfo.url();
+            },
+            (error)=> {console.log(error)}
+          );
+    return fileUrl
   }
+
+  const handleSetThumbnail = async () => {
+
+    const newThumbnailUrl = await uploadImageToMoralis()
+    
+    const NFTCollections = Moralis.Object.extend("NFTCollections");
+    const query = new Moralis.Query(NFTCollections);
+    query.equalTo("contractAddr", collectionId);
+    const result = await query.first();
+    result.set("thumbnail",newThumbnailUrl)
+    result.save()
+    
+    alert("new thumbnail set")
+  }
+
+  
 
   const thumbnailEditor = 
   <div className="container">
@@ -95,7 +112,7 @@ const Collection = () => {
       <div className="title">Collection Thumbnail</div>
       <div id="app" className="col-md-6 offset-md-3">
           <div className="form_element">
-              <input onChange={handleThumbnailChange} className="form-control" type="file" id="input_image" name="image" accept="image/png, image/jpeg"/>
+              <input onChange={handleThumbnailChange} className="form-control" type="file" id="input_image" name="image" accept="image/png, image/jpeg, image/jpg"/>
           </div>
           <div className="form_element">
               <button onClick={handleSetThumbnail} className="btn btn-primary btn-lg btn-block" id="submit_button">Edit</button>

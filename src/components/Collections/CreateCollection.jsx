@@ -9,49 +9,63 @@ const CreateCollection = () => {
     const [name, setName] = useState();
     const [symbol, setSymbol] = useState();
     const [description, setDescription] = useState();
-    //const [selectedFile, setSelectedFile] = useState();
+    const [selectedFile, setSelectedFile] = useState();
 
-    /*
+    //TODO: DRY
     const uploadImageToMoralis = async () => {
         if (!selectedFile){
             alert("no thumbnail")
             return
         }
         const file = new Moralis.File(selectedFile.name, selectedFile)
-        file.save().then(() => {console.log("file saved correctly")},(error)=> {console.log(error)}
+        let fileUrl;
+        file.save().then(
+            (fileInfo) => {
+                fileUrl = fileInfo.url();
+                console.log(fileUrl)
+                console.log("File saved correctly")},
+            (error)=> {console.log(error)}
           );
         return file
     }
-    */
 
     const handleCreateCollection = async () =>{
-        //const image = await uploadImageToMoralis()
-        if (!name || !description || !symbol){
+        if (!name || !symbol){
             alert("Missing data necessary to mint your NFT")
             return
         }
+
+        const thumbnail = await uploadImageToMoralis();
+
         const options = {
             abi: marketplaceABI,
             contractAddress: marketplaceAddress,
-            functionName: "createNftContract",
+            functionName: "createNFTCollection",
             params: {
               name: name,
-              symbol: symbol,
-              description: description
+              symbol: symbol
             },
         }
         const message = await Moralis.executeFunction(options)
         .then(async (message) => {
-            alert("NFT Collection Created")
+            alert("NFT Collection Created --- tx_hash:" + message.hash)
+            const CollectionExtraData = Moralis.Object.extend("CollectionExtraData");
+            const collectionExtraData = new CollectionExtraData();
+
+            collectionExtraData.save({hash: message.hash, thumbnail: thumbnail.url()})
+            .then(
+                (success) => {console.log(success)},
+                (error) => {console.log(error)}
+            );
         })
-        .catch((e) => alert(e.data.message));
+        .catch((e) => alert(e));
     }  
 
-    /*
+    
     const handleFileChange = (e) =>{
         setSelectedFile(e.target.files[0])
     }
-    */
+    
     const handleNameChange = (e) => {setName(e.target.value)}
 
     const handleSymbolChange = (e) => {setSymbol(e.target.value)}
@@ -73,6 +87,13 @@ const CreateCollection = () => {
                         </div>
                         <div className="form_element">
                             <input onChange={handleSymbolChange} value={symbol || ""} className="form-control"  type="text" id="input_symbol" name="symbol" placeholder="Symbol"/>
+                        </div>
+                        <div className="form_element">
+                            <div>
+                                Thumbnail
+                            </div>
+                            <input onChange={handleFileChange} className="form-control" 
+                            type="file" id="input_image" name="image" accept="image/png, image/jpeg"/>
                         </div>
                         <div className="form_element">
                             <button onClick={handleCreateCollection} className="btn btn-primary btn-lg btn-block" id="submit_button">Create</button>

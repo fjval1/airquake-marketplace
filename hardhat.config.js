@@ -35,7 +35,7 @@ module.exports = {
     */
     mumbai: {
       url: 'https://speedy-nodes-nyc.moralis.io/dc87dee26508baa6bac5aef4/polygon/mumbai', //moralis speedy node
-      accounts: ['07dfe3ae3433df2892370282132046f4c3ff482284f530295c6c4f7a44c35902'] //private key for this public key: 0xD1301af67872C27c2C00088db28aad41661e552c
+      accounts: ['eda2f07c090fc0c853c74e8de3ba88bdbad266def4b21b909d6e20b387bba8f8'] //private key for this public key: 0xcba7DD8462d9F6068F8657572349866531dE2025
     }
   }
   

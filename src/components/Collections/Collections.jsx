@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  useMoralisQuery,
-} from "react-moralis";
-import { Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
-import {
-  RightCircleOutlined,
-} from "@ant-design/icons";
-import {
-  BrowserRouter as Router,
-  NavLink,
-} from "react-router-dom";
+import {useMoralisQuery, useChain} from "react-moralis";
+import { Card, Image } from "antd";
+import {BrowserRouter as Router,NavLink} from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -57,28 +49,16 @@ const Collections = () => {
   return (
     <>
       <div>
-
         <div style={styles.NFTs}>
           {collections?.map((collection, index) => (
               <Card
                 hoverable
-                /*
-                actions={[
-                  <Tooltip title="View Collection">
-                    <NavLink to={`/collections/${collection.attributes.contractAddr}`}>
-                      <RightCircleOutlined
-                        onClick={() => console.log("redirecting")}
-                      />
-                    </NavLink>  
-                  </Tooltip>,
-                ]}
-                */
                 style={{ width: 240, border: "2px solid #e7eaf3" }}
                 cover={
                   <NavLink to={`/collections/${collection.attributes.contractAddr}`}>
                     <Image
                       preview={false}
-                      src={collection?.attributes.Thumbnail || "error"}
+                      src={collection?.attributes.thumbnail || "error"}
                       fallback={fallbackImg}
                       alt=""
                       style={{ height: "240px" }}

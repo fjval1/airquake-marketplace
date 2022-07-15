@@ -12,6 +12,7 @@ async function main() {
   const MarketplaceContractFactory = await ethers.getContractFactory("Marketplace");
   const marketplace = await MarketplaceContractFactory.deploy(NFTImplementation.address);
   await marketplace.deployed();
+  
   console.log("marketplace deployed to:", marketplace.address);
 }
 
