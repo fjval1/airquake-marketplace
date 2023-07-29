@@ -1,0 +1,1044 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\contracts\\marketplace.sol": {
+      "lastModificationDate": 1657243760277,
+      "contentHash": "910c184d48b381252943007071b144f1",
+      "sourceName": "contracts/marketplace.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/proxy/Clones.sol",
+        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/utils/Counters.sol",
+        "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        "./NFT.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.12"
+      ],
+      "artifacts": [
+        "Marketplace"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\proxy\\Clones.sol": {
+      "lastModificationDate": 1655588365905,
+      "contentHash": "f741efede98f234458f02f818f80c7f3",
+      "sourceName": "@openzeppelin/contracts/proxy/Clones.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Clones"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\security\\ReentrancyGuard.sol": {
+      "lastModificationDate": 1655588373770,
+      "contentHash": "92f9448b23a90ea3bb932ee55cc3ccce",
+      "sourceName": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ReentrancyGuard"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
+      "lastModificationDate": 1655588373419,
+      "contentHash": "8398972af73b4e9e5ff3b31cad86234f",
+      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\utils\\Counters.sol": {
+      "lastModificationDate": 1655588366065,
+      "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
+      "sourceName": "@openzeppelin/contracts/utils/Counters.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Counters"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\ERC721.sol": {
+      "lastModificationDate": 1655588369156,
+      "contentHash": "49295810dc45f300e5f84b4b50d88a59",
+      "sourceName": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC721.sol",
+        "./IERC721Receiver.sol",
+        "./extensions/IERC721Metadata.sol",
+        "../../utils/Address.sol",
+        "../../utils/Context.sol",
+        "../../utils/Strings.sol",
+        "../../utils/introspection/ERC165.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC721"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\contracts\\NFT.sol": {
+      "lastModificationDate": 1655761639536,
+      "contentHash": "d25138fbf2ce92b5daf7c38f6ba24fa8",
+      "sourceName": "contracts/NFT.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "@openzeppelin/contracts/utils/Counters.sol",
+        "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+        "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol",
+        "./marketplace.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.12"
+      ],
+      "artifacts": [
+        "NFT"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+      "lastModificationDate": 1655588366018,
+      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\IERC721.sol": {
+      "lastModificationDate": 1655588372177,
+      "contentHash": "27d219ec6f69478d065fdbfa7931da68",
+      "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/introspection/IERC165.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC721"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\IERC721Receiver.sol": {
+      "lastModificationDate": 1655588372681,
+      "contentHash": "592df588492d45fdcf46b3cb608c0fbf",
+      "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC721Receiver"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\extensions\\IERC721Metadata.sol": {
+      "lastModificationDate": 1655588372572,
+      "contentHash": "efbc0d15b80a74e34dbe8da0f3e879bb",
+      "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC721.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC721Metadata"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\utils\\Address.sol": {
+      "lastModificationDate": 1655588365510,
+      "contentHash": "ad714a6368ee7d43cded6bbe8af0b155",
+      "sourceName": "@openzeppelin/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.1"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\utils\\Strings.sol": {
+      "lastModificationDate": 1655588374244,
+      "contentHash": "9c54c6c065d9e590fdcdd72c451425b9",
+      "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Strings"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\utils\\introspection\\ERC165.sol": {
+      "lastModificationDate": 1655588367502,
+      "contentHash": "0e7db055ce108f9da7bb6686a00287c0",
+      "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC165.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC165"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts\\utils\\introspection\\IERC165.sol": {
+      "lastModificationDate": 1655588371401,
+      "contentHash": "03e6768535ac4da0e9756f1d8a4a018a",
+      "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC165"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol": {
+      "lastModificationDate": 1655149153939,
+      "contentHash": "be27cb63ce8e469db3306a210450385f",
+      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/AddressUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "Initializable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\token\\ERC721\\ERC721Upgradeable.sol": {
+      "lastModificationDate": 1655149153527,
+      "contentHash": "003a2d431418e4e32f06a75d965e0780",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC721Upgradeable.sol",
+        "./IERC721ReceiverUpgradeable.sol",
+        "./extensions/IERC721MetadataUpgradeable.sol",
+        "../../utils/AddressUpgradeable.sol",
+        "../../utils/ContextUpgradeable.sol",
+        "../../utils/StringsUpgradeable.sol",
+        "../../utils/introspection/ERC165Upgradeable.sol",
+        "../../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC721Upgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\token\\ERC721\\extensions\\ERC721EnumerableUpgradeable.sol": {
+      "lastModificationDate": 1655149153500,
+      "contentHash": "4dc7cd48fcf3374dc73f8788fdcfcc93",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../ERC721Upgradeable.sol",
+        "./IERC721EnumerableUpgradeable.sol",
+        "../../../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC721EnumerableUpgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\token\\ERC721\\extensions\\ERC721URIStorageUpgradeable.sol": {
+      "lastModificationDate": 1655149153532,
+      "contentHash": "2b09eda73a84a74195c040802c951bb6",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../ERC721Upgradeable.sol",
+        "../../../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC721URIStorageUpgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol": {
+      "lastModificationDate": 1655149153120,
+      "contentHash": "b70d2e0552ab1f44f7e44b5f8379c358",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.1"
+      ],
+      "artifacts": [
+        "AddressUpgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\token\\ERC721\\IERC721Upgradeable.sol": {
+      "lastModificationDate": 1655149153865,
+      "contentHash": "668d517c0c98c142b0dade502dc378af",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/introspection/IERC165Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC721Upgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\token\\ERC721\\IERC721ReceiverUpgradeable.sol": {
+      "lastModificationDate": 1655149153853,
+      "contentHash": "ba28cf60b52b00d2b3a190bcdf0952bd",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721ReceiverUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC721ReceiverUpgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\token\\ERC721\\extensions\\IERC721MetadataUpgradeable.sol": {
+      "lastModificationDate": 1655149153844,
+      "contentHash": "76212ca0265501d1eb3dd1175e6afca4",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/IERC721MetadataUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC721Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC721MetadataUpgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol": {
+      "lastModificationDate": 1655149153157,
+      "contentHash": "6200b84950eb05b4a92a39fd1d6e0f9b",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ContextUpgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\utils\\StringsUpgradeable.sol": {
+      "lastModificationDate": 1655149154058,
+      "contentHash": "f60b5fcbc57911b0fbc7a31a110f90bc",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "StringsUpgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol": {
+      "lastModificationDate": 1655149153393,
+      "contentHash": "5f2d8b81c0ff5bd2047b4846c20b998d",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC165Upgradeable.sol",
+        "../../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC165Upgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\utils\\introspection\\IERC165Upgradeable.sol": {
+      "lastModificationDate": 1655149153722,
+      "contentHash": "d6ecf203a5e72c845be9bbf2f304a289",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC165Upgradeable"
+      ]
+    },
+    "C:\\Users\\fjval\\Desktop\\airquake-marketplace\\node_modules\\@openzeppelin\\contracts-upgradeable\\token\\ERC721\\extensions\\IERC721EnumerableUpgradeable.sol": {
+      "lastModificationDate": 1655149153830,
+      "contentHash": "bed9876900f8c465d42317f566c03828",
+      "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/IERC721EnumerableUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.13",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC721Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC721EnumerableUpgradeable"
+      ]
+    }
+  }
+}
